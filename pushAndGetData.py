@@ -25,6 +25,8 @@ def pushDataToDB(analysisResults):
 r = requests.get('https://api.mlab.com/api/1/databases/analysis/collections/users?apiKey=tvG8BMjzxtNwm3fRgQv4LNbcF2IIeWWc&q={"_id":"4226040806"}')
 print(r.text)
 '''
+
+
 jsonData = requests.get('https://api.mlab.com/api/1/databases/analysis/collections/users?apiKey=tvG8BMjzxtNwm3fRgQv4LNbcF2IIeWWc')
 #print(jsonData.text)
 jsonToPython = json.loads(jsonData.text)
