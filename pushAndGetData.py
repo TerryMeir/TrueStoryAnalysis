@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Mar 22 12:05:34 2018
-
-@author: Terry
-"""
 import requests 
 import json
 import AnalyzeUser as au
@@ -34,8 +28,15 @@ jsonToPython = json.loads(jsonData.text)
 del jsonToPython[0]
 usersToAnalyze = []
 for user in jsonToPython:
-    usersToAnalyze.append(au.UserAnalyze(user['_id'], user['fullName'], user['username'], user['counts']['Followers'], user['counts']['Following'], user['counts']['Media'], user['counts']['UserTags'], user['bio'], user['private'], user['media']))
+    usersToAnalyze.append(au.UserAnalyze(user['_id'], user['fullName'], user['username'], user['counts']['Followers'], user['counts']['Following'], user['counts']['Media'], user['counts']['UserTags'], user['bio'], user['private'], user['media'], user['profilePicture']))
 
+'''
 for user in usersToAnalyze:
-    print(user.printUserDet())
+    print(user.userDetails())
+'''
+suspiciousUsers = []
+for user in usersToAnalyze:
+    user.analyze()
+    if user.isSuspicious():
+        suspiciousUsers.append(user)
 
