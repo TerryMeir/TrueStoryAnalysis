@@ -16,7 +16,16 @@ class google_image_search:
         self.numOfpageResults = 0
 
     def ReverseImageLookup(self):
-        self.sourceCode = self.opener.open(self.googlePath).read()
+        try:
+            self.sourceCode = self.opener.open(self.googlePath).read()
+        except urllib.error.HTTPError as e:
+            print("exeption occur")
+            print("msg: "+e.msg)
+            print("reason: "+e.reason)
+            print("errno: "+e.errno)
+            print("getcode: "+e.getcode)
+            print("info: "+e.info)
+            print("strerror: "+e.strerror)
         findLinks = re.findall(r'<img src', self.sourceCode.decode('utf-8'))
         self.numOfReusePic = len(findLinks)
         numbersOfPages = re.findall(r'<a aria-label="Page ', self.sourceCode.decode('utf-8'))
