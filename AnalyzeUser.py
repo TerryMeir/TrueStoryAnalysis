@@ -15,8 +15,6 @@ class UserAnalyze:
         self.numOfMedia = numOfMedia
         self.numOfUserTags = numOfUserTags
         self.bio = bio
-        #self.tags = tags
-        #self.hashtags = hashtags
         self.isPrivate = isPrivate
         self.media = media
         #results
@@ -24,17 +22,21 @@ class UserAnalyze:
         self.followingVSfollowers = None
         self.suspiciousName = 0
         self.emptyProfile = 0
-        #self.reuseContent = None
-        self.suspiciousHashtags = None
+        #self.suspiciousHashtags = None
         self.profilePic = profilePic
         self.profilePicSR = isr.imageSearchResult()
+        
 
     def userDetails(self):
         return "id=", self.Id, "name=", self.fullName, "username=", self.userName, "follow=", self.numOfFollowing, "following", self.numOfFollowers, "media=", self.numOfMedia, "isPrivate?=", self.isPrivate
 
     def calcRelations(self):
-        self.postVSfollowers = self.numOfMedia/self.numOfFollowers
-        self.followingVSfollowers = self.numOfFollowing/self.numOfFollowers
+        if self.numOfFollowers != 0 :
+            self.postVSfollowers = self.numOfMedia/self.numOfFollowers
+            self.followingVSfollowers = self.numOfFollowing/self.numOfFollowers
+        else:
+            self.postVSfollowers = -1
+            self.followingVSfollowers = -1
 
     def detectSuspiciousName(self):
         if self.fullName != False:
