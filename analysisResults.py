@@ -13,6 +13,14 @@ class analysisResults:
         self.emptyProfile = user.emptyProfile
         self.googleSRnumOfLinks = user.profilePicSR.numbersOfLinks
         self.googleSRnumOfPages = user.profilePicSR.numbersOfPages
+<<<<<<< HEAD
+        self.numOfFollowers = user.numOfFollowers
+        self.numOfFollowing = user.numOfFollowing
+        self.numOfMedia = user.numOfMedia
+        self.numOfUserTags = user.numOfUserTags
+        self.isPrivate = user.isPrivate
+
+=======
 '''    
     def __init__(self, isSuspicious, postVSfollowers, followingVSfollowers, suspiciousName, emptyProfile, profilePicSR):
         self.isSuspicious = isSuspicious
@@ -23,4 +31,5 @@ class analysisResults:
         self.emptyProfile = emptyProfile
         self.profilePicSR = profilePicSR
  '''
+>>>>>>> 00c1f5a648403a69a4147115062a407e30087dee
        
